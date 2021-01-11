@@ -19,10 +19,20 @@ bundle
 
 bin/rails hotwire:install 
 
-
 bin/rails g scaffold room name:string
 bin/rails db:migrate
 
+bin/rails g scaffold room name:string
+bin/rails db:migrate
+bin/rails g model message room:references content:text
+bin/rails db:migrate
+bundle exec rails g controller messages
+touch app/views/messages/new.html.erb
+touch app/views/messages/_message.html.erb
+touch app/views/messages/create.turbo_stream.erb
+
+touch app/assets/javascripts/controllers/reset_form_controller.js
+touch app/views/rooms/_room.html.erb
 # README
 
 This README would normally document whatever steps are necessary to get the
